@@ -1,0 +1,4 @@
+tqdm==4.62.2
+torch==1.8.2+cu102
+transformers==4.11.3
+torchcrf==1.1.0
