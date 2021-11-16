@@ -1,4 +1,6 @@
+import os
 import torch
+import logging
 
 from tqdm import tqdm, trange
 from torch.utils.data import DataLoader, SequentialSampler
@@ -173,7 +175,7 @@ class Bert_Bilstm_Crf():
 
         golden_tags = [[ttl[1] for ttl in sen] for sen in eval_sens]
         predict_tags = [[ttl[2] for ttl in sen] for sen in eval_sens]
-        cal_indicators = Metrics(golden_tags, predict_tags)
+        cal_indicators = Metrics(golden_tags, predict_tags, remove_O=config.remove_O)
         avg_metrics = cal_indicators.cal_avg_metrics()  # avg_metrics['precision'], avg_metrics['recall'], avg_metrics['f1_score']
 
         return avg_metrics, cal_indicators, eval_sens
@@ -229,7 +231,7 @@ class Bert_Bilstm_Crf():
         #
         # golden_tags = [[ttl[1] for ttl in sen] for sen in eval_sens]
         # predict_tags = [[ttl[2] for ttl in sen] for sen in eval_sens]
-        # cal_indicators = Metrics(golden_tags, predict_tags)
+        # cal_indicators = Metrics(golden_tags, predict_tags, remove_O=self.config.remove_O)
         # avg_metrics = cal_indicators.cal_avg_metrics()
 
 

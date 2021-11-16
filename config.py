@@ -18,8 +18,8 @@ class Config(object):
         self.label_list = []
         self.use_gpu = True
         self.device = "cuda"
-        self.checkpoints = True
-        self.model = 'bert_bilstm_crf'  # 可选['bert_bilstm_crf','hmm','bilstm_crf]
+        self.checkpoints = True  # 使用预训练模型时设置为False
+        self.model = 'bert_bilstm_crf'  # 可选['bert_bilstm_crf','bilstm_crf','bilstm','crf','hmm']
 
         # 输入数据集、日志、输出目录
         self.train_file = os.path.join(self.base_path, 'data/train.txt')
@@ -46,3 +46,4 @@ class Config(object):
         self.adam_epsilon = 1e-8
         self.warmup_steps = 0
         self.logging_steps = 50
+        self.remove_O = False
