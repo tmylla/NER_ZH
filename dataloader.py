@@ -79,7 +79,7 @@ class NERDataset(Dataset):
 
 
     def read_file(self):
-        with open(self.config.test_file, "r", encoding="utf-8") as f:
+        with open(self.file_path, "r", encoding="utf-8") as f:
             lines, words, labels = [], [], []
             for line in f.readlines():
                 contends = line.strip()
